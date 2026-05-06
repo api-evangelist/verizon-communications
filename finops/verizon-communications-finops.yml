@@ -8,168 +8,74 @@ alignedWith:
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 provider: Verizon Communications
 providerId: verizon-communications
-publisherName: Verizon Communications
-serviceCategory: API
+publisherName: Verizon Communications, Inc.
+serviceCategory: Telecommunications
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
+  - FinOps
+  - FOCUS
   - Telecommunications
-  - Wireless
   - Network APIs
   - IoT
   - 5G
-  - Enterprise
-  - Identity
-  - FinOps
-  - Cost Management
-  - FOCUS
-description: FinOps framework definition for the Verizon Communications API surface. Provides a FOCUS-aligned
-  mapping for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+description: FOCUS-aligned FinOps shape for Verizon Communications API products. Verizon does not
+  publish self-service rates for its Network APIs, ThingSpace IoT, 5G Edge, TM Forum, or Voice (CPaaS)
+  APIs; billing is governed by the enterprise master service agreement and per-product schedules.
+sources:
+  - https://www.verizon.com/business/products/internet-of-things/
+notes: No public unit prices or invoice line definitions were available at reconciliation time.
+  The meter list captures the categories Verizon contracts typically bill against.
 billingModel:
-  pricingCategory: Usage-Based
+  pricingCategory: Contract / Custom
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
     - Usage
     - Purchase
     - Tax
-    - Credit
     - Adjustment
-  chargeFrequency: Recurring
 focusColumns:
-  ServiceName: Verizon Communications
-  ServiceCategory: Developer Tools / API
+  ServiceName: Verizon Communications APIs
+  ServiceCategory: Telecommunications
   ProviderName: Verizon Communications
-  PublisherName: Verizon Communications
-  InvoiceIssuerName: Verizon Communications
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  PublisherName: Verizon Communications, Inc.
+  InvoiceIssuerName: Verizon Communications, Inc.
   BillingCurrency: USD
-  ChargeCategory: Usage
 meters:
   - name: api_requests
-    description: Count of billable API requests
     unit: request
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
+      - api_product
+      - environment
+  - name: connected_devices
+    unit: device-month
+    aggregation: max
+    dimensions:
+      - api_product
       - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
+  - name: voice_minutes
+    unit: minute
     aggregation: sum
     dimensions:
-      - api
+      - direction
       - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Verizon Network APIs
-    baseURL: ''
-    tags:
-      - Network APIs
-      - Authentication
-      - Fraud Prevention
-      - Identity
-      - SIM Swap
-      - Number Verification
-    serviceName: Verizon Network APIs
-    serviceCategory: API
-  - name: Verizon ThingSpace IoT API
-    baseURL: ''
-    tags:
-      - IoT
-      - Device Management
-      - Connectivity
-      - Wireless
-    serviceName: Verizon ThingSpace IoT API
-    serviceCategory: API
-  - name: Verizon 5G Edge API
-    baseURL: ''
-    tags:
-      - 5G
-      - Edge Computing
-      - MEC
-      - Ultra-Low Latency
-    serviceName: Verizon 5G Edge API
-    serviceCategory: API
-  - name: Verizon TM Forum Service Management APIs
-    baseURL: ''
-    tags:
-      - TM Forum
-      - ITIL
-      - Service Management
-      - Enterprise
-      - B2B
-    serviceName: Verizon TM Forum Service Management APIs
-    serviceCategory: API
-  - name: Verizon Voice API (CPaaS)
-    baseURL: ''
-    tags:
-      - CPaaS
-      - Voice
-      - Contact Center
-      - IVR
-      - Communications
-    serviceName: Verizon Voice API (CPaaS)
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+principles:
+  - name: Visibility
+    description: Verizon does not expose a public usage API for these products; consumption is reported
+      through the Verizon Enterprise Center / My Business invoice and the per-product portals (e.g.
+      ThingSpace dashboard).
+  - name: Allocation
+    description: Tag spend at the contract / billing-account level using the cost-center mapping in
+      My Business; sub-account splits typically require a separate billing account from Verizon.
+  - name: Optimization
+    description: Optimization levers are commercial — committed-volume rate cards in the master
+      agreement, retiring unused SIMs / lines, and consolidating ThingSpace device pools.
+  - name: Accountability
+    description: Spend ownership sits with the named Verizon Business account executive on the
+      consumer side; finance reconciles against the My Business monthly invoice.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
