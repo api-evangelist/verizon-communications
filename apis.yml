@@ -124,6 +124,10 @@ apis:
         url: https://www.verizon.com/business/products/contact-center-cx/voice-api/
 
 common:
+  - type: GitHubOrganization
+    url: https://github.com/verizon
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/verizon
   - type: Website
     url: https://www.verizon-communications.com
   - type: Portal
