@@ -184,6 +184,8 @@ common:
         description: Connect ThingSpace device management APIs to IoT platforms and enterprise data lakes.
       - name: Edge Cloud Providers
         description: Deploy 5G Edge applications across Verizon's MEC nodes in partnership with AWS Wavelength and Google Cloud.
+  - type: LLMsTxt
+    url: https://developers.verizon.com/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
