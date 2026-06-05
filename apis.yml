@@ -20,6 +20,7 @@ tags:
   - 5G
   - Enterprise
   - Identity
+  - Fortune 100
 apis:
   - aid: verizon-communications:network-apis
     name: Verizon Network APIs
