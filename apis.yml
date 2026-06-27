@@ -141,7 +141,7 @@ common:
     url: https://developers.verizon.com/#/apis/ns/documentation/frequently-asked-questions
   - type: Login
     url: https://secure.verizon.com/signin?goto=https://developers.verizon.com/apis/sec/v1/login
-  - type: SignUp
+  - type: Signup
     url: https://secure.verizon.com/account/register/start?goto=https%3A%2F%2Fdevelopers.verizon.com%2Fapis%2Fsec%2Fv1%2Flogin
   - type: PrivacyPolicy
     url: https://www.verizon.com/about/privacy/
@@ -185,7 +185,7 @@ common:
         description: Connect ThingSpace device management APIs to IoT platforms and enterprise data lakes.
       - name: Edge Cloud Providers
         description: Deploy 5G Edge applications across Verizon's MEC nodes in partnership with AWS Wavelength and Google Cloud.
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://developers.verizon.com/llms.txt
 maintainers:
   - FN: Kin Lane
