@@ -125,6 +125,8 @@ apis:
         url: https://www.verizon.com/business/products/contact-center-cx/voice-api/
 
 common:
+  - type: DomainSecurity
+    url: security/verizon-communications-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/verizon
   - type: LinkedIn
